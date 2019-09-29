@@ -1,15 +1,18 @@
+def getdigit(num, k):
+    return num % pow(10,k) // pow(10,k-1)
+
 def stable_sort(a, n, k):
     b = [0] * 10
     c = [0] * n
     for i in range(n):
-        b[a[i] % pow(10,k) // pow(10,k-1)] += 1
+        b[getdigit(a[i], k)] += 1
         
     for i in range(1, 10):
         b[i] += b[i-1]
 
-    for j in range(n - 1, -1 , -1):
-        c[b[a[j] % pow(10,k) // pow(10,k-1)] - 1] = a[j]
-        b[a[j] % pow(10,k) // pow(10,k-1)] -= 1
+    for i in range(n - 1, -1 , -1):
+        c[b[getdigit(a[i], k)] - 1] = a[i]
+        b[getdigit(a[i], k)] -= 1
     return c
 
 def radix_sort(a, n, k):

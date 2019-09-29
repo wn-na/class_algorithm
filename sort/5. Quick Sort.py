@@ -1,7 +1,7 @@
 def quick_sort(arr, p, r):
     if p < r :
         q = partition(arr, p, r)
-        quick_sort(arr, p,   q-1)
+        quick_sort(arr, p, q-1)
         quick_sort(arr, q+1, r)
 
 def partition(arr, p, r):
