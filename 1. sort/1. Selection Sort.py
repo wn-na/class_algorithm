@@ -9,7 +9,7 @@ def selection_sort(arr):
     for i in range(len(arr) - 1, 1, -1):
         select = theLargest(arr, i)
         arr[i], arr[select] = arr[select], arr[i]
-    return arr
 
 testcase = [3,31,48,73,8,11,20,29,65,15]
-print("Selection Sort", selection_sort(testcase))
+selection_sort(testcase)
+print("Selection Sort", testcase)
