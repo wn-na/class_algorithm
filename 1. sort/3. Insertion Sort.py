@@ -6,7 +6,7 @@ def insertion_sort(arr):
             arr[loc + 1] = arr[loc]
             loc = loc - 1
         arr[loc+1] = item
-    return arr
 
 testcase = [3,31,48,73,8,11,20,29,65,15]
-print("Insertion Sort", insertion_sort(testcase))
+insertion_sort(testcase)
+print("Insertion Sort", testcase)
