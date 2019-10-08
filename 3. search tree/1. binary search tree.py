@@ -12,7 +12,7 @@ class Node:
         return str(self.val)
     
 def treeSearch(t, x):
-    if t is None or t.val == x:
+    if t == None or t.val == x:
         return t
     if x < t.val:
         return treeSearch(t.left, x)
@@ -20,7 +20,7 @@ def treeSearch(t, x):
         return treeSearch(t.right, x)
 
 def treeParentSearch(t, x):
-    if t is None or (t.right is not None and t.right.val == x) or (t.left is not None and t.left.val == x):
+    if t == None or (t.right != None and t.right.val == x) or (t.left != None and t.left.val == x):
         return t
     if x < t.val:
         return treeParentSearch(t.left, x)
@@ -29,7 +29,7 @@ def treeParentSearch(t, x):
 
 
 def treeInsert(t,x):
-    if t is None:
+    if t == None:
         return Node(x)
     if x < t.val:
         t.left = treeInsert(t.left, x)
@@ -39,12 +39,12 @@ def treeInsert(t,x):
         return t
 
 def treeDeep(t):
-    if t is None:
+    if t == None:
         return 0
     return 1 + max(treeDeep(t.right), treeDeep(t.left))
 
 def treePrint(t):
-    if t is None:
+    if t == None:
         return
     val = []
     tree = [t]
@@ -73,16 +73,16 @@ def treeDelete(t, r, p):
         p.right = deleteNode(r)
 
 def deleteNode(r):
-    if r.left is None and r.right is None:
+    if r.left == None and r.right == None:
         r.val = None
         return None
-    elif r.left is None and r.right is not None:
+    elif r.left == None and r.right != None:
         return r.right
-    elif r.left is not None and r.right is None:
+    elif r.left != None and r.right == None:
         return r.left
     else:
         s = r.right
-        while s.left is not None:
+        while s.left != None:
             parent = s
             s = s.left
         r.val = s.val
@@ -93,8 +93,9 @@ def deleteNode(r):
 
         return r
          
+# do not use command 'is', use '=='
 if __name__ == "__main__":
-    k = Node(30)
+    k = Node(30) # why if k = None and try Insert => return None
     li = [20,25,40,10,35]
     for i in li:
         treeInsert(k, i)
@@ -102,16 +103,17 @@ if __name__ == "__main__":
     print("=" * 50)
     treePrint(k)
 
-    t  = treeSearch(k, 20)
-    q = treeParentSearch(k,20)
-    treeDelete(k, t, q)
+    li = [20,25,40,30,10,35]
+    for i in li:
+        t  = treeSearch(k, i)
+        q = treeParentSearch(k, i)
+        treeDelete(k, t, q)
     
+        print("=" * 50)
+        treePrint(k)
+        
     print("=" * 50)
-    treePrint(k)
-    
-    t  = treeSearch(k, 30)
-    q = treeParentSearch(k,30)
-    treeDelete(k, t, q)
-    
-    print("=" * 50)
-    treePrint(k)
+    if k == None:
+        print("공백")
+    else:
+        treePrint(k)
