@@ -30,6 +30,9 @@ def treeParentSearch(t, x):
 
 def treeInsert(t,x):
     if t == None:
+        if hasattr(t, 'val'):
+            t.val = x
+            return t
         return Node(x)
     if x < t.val:
         t.left = treeInsert(t.left, x)
@@ -95,8 +98,8 @@ def deleteNode(r):
          
 # do not use command 'is', use '=='
 if __name__ == "__main__":
-    k = Node(30) # why if k = None and try Insert => return None
-    li = [20,25,40,10,35]
+    k = Node() # why if k = None and try Insert => return None
+    li = [30, 20,25,40,10,35]
     for i in li:
         treeInsert(k, i)
 
