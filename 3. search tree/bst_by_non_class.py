@@ -105,7 +105,6 @@ if __name__ == "__main__":
 
     print("=" * 50)
     treePrint(k)
-
     li = [20,25,40,30,10,35]
     for i in li:
         t  = treeSearch(k, i)
