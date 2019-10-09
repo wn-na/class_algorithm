@@ -22,11 +22,15 @@ def testSelect(random_max, arr_size_min, arr_size_max, select_func):
         print("== {0}.{1} function result ==".format(select_func.__module__, select_func.__name__))
         print("test case: random(0 to {0}), array size : {1}".format(random_max, arr_size))
         if Flag:
-            print(">> fail")
+            print(">> !!! fail")
+            return False
         else:
             print(">> Success")
+            return True
     except:
         print(">> error")
+        return False
+
 
 
 if __name__ == '__main__':
