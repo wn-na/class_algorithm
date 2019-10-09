@@ -20,11 +20,14 @@ def stable_sort(a, k, base):
     for i in range(n):
         a[i] = c[i]
 
-def radix_sort(a, base):
-    k = int(log(max(a), base) + 1)
+def radix_sort(a, base, sort_desc):
+    k = int(log(max(a) + 1, base) + 1)
     for i in range(1, k + 1):
         stable_sort(a, i, base)
 
-testcase = [123,2154,222,4,223,1560,1061,2150]
-radix_sort(testcase, 10)
-print("radix Sort", testcase)
+    if sort_desc:
+        a.reverse()
+        
+def sort(A, sort_desc):
+    DEFAULT_BASE = 10
+    radix_sort(A, DEFAULT_BASE, sort_desc)
