@@ -2,7 +2,7 @@ import linearselect
 import select
 import random
 
-def testSort(random_max, arr_size_min, arr_size_max, select_func):
+def testSelect(random_max, arr_size_min, arr_size_max, select_func):
     try:
         random_case = [random.randint(0, random_max) for i in range(random.randint(arr_size_min, arr_size_max))]
         arr_size = len(random_case)
@@ -30,5 +30,5 @@ def testSort(random_max, arr_size_min, arr_size_max, select_func):
 
 
 if __name__ == '__main__':
-    testSort(3424, 10, 200, select.select)
-    testSort(4358, 10, 250, linearselect.select)
+    testSelect(3424, 10, 200, select.select)
+    testSelect(4358, 10, 250, linearselect.select)
