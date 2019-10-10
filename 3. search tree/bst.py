@@ -8,7 +8,7 @@ class node:
             return self.right == None and self.left == None and self.val == None
         return self.right == second.right and self.left == second.left and self.val == second.val
     
-    def __str__(self):
+    def __repr__(self):
         return str(self.val)
 
 class node_bst:
