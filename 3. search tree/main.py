@@ -5,7 +5,7 @@ if __name__ == "__main__":
     k = bst.node_bst()
     numlist = [i for i in range(300)]
     random.shuffle(numlist)
-    li = numlist[:50]
+    li = numlist[:40]
     for i in li:
         k.insert(i)
 
@@ -20,7 +20,6 @@ if __name__ == "__main__":
         
     print("=" * 50)
     k.print()
-    
     random.shuffle(li)
     for i in li:
         k.insert(i)

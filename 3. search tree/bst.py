@@ -14,9 +14,6 @@ class node:
 class node_bst:
     def __init__(self):
         self.head = node()
-    
-    def __str__(self):
-        return str(self.val)
 
     def insert(self, val):
         if self.head == None:
@@ -97,7 +94,6 @@ class node_bst:
 
     def delete(self, val):
         if self.search(val) == None:
-            print(val)
             return None
         self.__treeDelete(self.search(val), self.__parentsearch(val))
 
@@ -108,10 +104,10 @@ class node_bst:
             p.left = self.__deleteNode(r)
         else:
             p.right = self.__deleteNode(r)
+        del r
 
     def __deleteNode(self, r):
         if r.left == None and r.right == None:
-            r.val = None
             return None
         elif r.left == None and r.right != None:
             return r.right
@@ -127,5 +123,6 @@ class node_bst:
                 r.right = s.right
             else:
                 parent.left = s.right
+            del s
 
             return r
