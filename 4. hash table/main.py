@@ -17,6 +17,11 @@ def testhash(data, hashtype = None):
     print(h.search(data[3]))
     print(h.search(200))
     
+    print(h[data[7]])
+    h[101] = 45
+    print(h[1])
+    print(h.search(101))
+    
     print("=" * 30)
     print(h.delete(data[3]))
     print(h.delete(200))
@@ -37,7 +42,11 @@ def testchainhash(data):
     print("=" * 30)
     print(h.chainedsearch(data[3]))
     print(h.chainedsearch(200))
-    
+
+    print(h[data[7]])
+    h[101] = 4
+    print(h[data[7]])
+    print(h.chainedsearch(101))
     print("=" * 30)
     print(h.chaineddelete(data[3]))
     print(h.chaineddelete(200))
@@ -47,12 +56,13 @@ def testchainhash(data):
     print("=" * 30)
 
 if __name__ == "__main__":
-    data = [random.randint(0,100) for i in range(10)]
+    data = list(set([random.randint(0,100) for i in range(12)]))
     print("======= hashtable.LINEAR =======")
     testhash(data)
     print("======= hashtable.DOUBLE =======")
     testhash(data, hashtable.OPENTYPE.DOUBLE)
     print("======= hashtable.QUADRATIC =======")
     testhash(data, hashtable.OPENTYPE.QUADRATIC)
+    data = [random.randint(0,100) for i in range(20)]
     print("======= chainhashtable =======")
     testchainhash(data)
