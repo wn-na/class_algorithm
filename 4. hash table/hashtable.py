@@ -79,10 +79,9 @@ class hashtable:
     def openadress(self, val):
         key = self.hash(val)
         for i in range(len(self)):
-            if self.__map[key] != self.DEFAULT_VALUE:
-                key = self.__getkey(key, val, i)
-            else:
+            if self.__map[key] == self.DEFAULT_VALUE:
                 return key
+            key = self.__getkey(key, val, i)
         return None
 
     def insert(self, fkey, value):
@@ -117,19 +116,22 @@ class hashtable:
 
     def chainedsearch(self, value):
         key = self.hash(value)
-        if isinstance(self.__map[key], list):
-            for i in self.__map[key]:
-                if i == value:
-                    return i
+        if not isinstance(self.__map[key], list):
+            return None
+        
+        for i in self.__map[key]:
+            if i == value:
+                return i
         return None
         
     def chaineddelete(self, value):
         key = self.__map[self.hash(value)]
-        if isinstance(key, list):
-            for i in range(len(key)):
-                if key[i] == value:
-                    del key[i]
-                    if not key:
-                        self.__map[self.hash(value)] = self.DEFAULT_VALUE
-                    return True
+        if not isinstance(key, list):
+            return False
+        for i in range(len(key)):
+            if key[i] == value:
+                del key[i]
+                if not key:
+                    self.__map[self.hash(value)] = self.DEFAULT_VALUE
+                return True
         return False
