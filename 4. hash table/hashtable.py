@@ -29,17 +29,18 @@ class hashtable:
         self.__map = [self.DEFAULT_VALUE] * size
 
     def __iter__(self):
-        self.n = 0
+        self.__n = 0
         return self
 
     def __next__(self):
-        if self.n < len(self):
-            result = self.__map[self.n]
-            self.n += 1
+        if self.__n < len(self):
+            result = self.__map[self.__n]
+            self.__n += 1
             if result == self.DEFAULT_VALUE:
                 result = None
-            return "[{0}]: {1}".format(self.n, result)
+            return "[{0}]: {1}".format(self.__n, result)
         else:
+            del self.__n
             raise StopIteration
 
     def __len__(self):
