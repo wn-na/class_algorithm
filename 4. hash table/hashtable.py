@@ -121,8 +121,7 @@ class hashtable:
             for i in self.__map[key]:
                 if i == value:
                     return i
-        else:
-            return None
+        return None
         
     def chaineddelete(self, value):
         key = self.__map[self.hash(value)]
@@ -133,5 +132,4 @@ class hashtable:
                     if not key:
                         self.__map[self.hash(value)] = self.DEFAULT_VALUE
                     return True
-        else:
-            return False
+        return False
