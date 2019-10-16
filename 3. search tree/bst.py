@@ -3,10 +3,10 @@ class node:
         self.val = val
         self.right = self.left = None
 
-    def __eq__(self, second):
-        if second is None:
-            return self.right == None and self.left == None and self.val == None
-        return self.right == second.right and self.left == second.left and self.val == second.val
+    def __eq__(self, nxt):
+        if nxt is None:
+            return (self.right, self.left, self.val) == (None, None, None)
+        return (self.right, self.left, self.val) == (nxt.right, nxt.left, nxt.val)
     
     def __repr__(self):
         return str(self.val)
